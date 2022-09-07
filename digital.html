@@ -29,15 +29,16 @@
             let minute = date.getMinutes();
             let seconds = date.getSeconds();
 
+            if(hour > 12){
+                hour = hour - 12;
+            }
+
             meridian = hour > 12 ? "PM" : "AM";
             
             minute = padZero(minute);
             seconds = padZero(seconds);
             hour = padZero(hour);
-            if(hour == 12){
-                hour -= 12;
-            }
-        
+            
             let cl = `${hour}:${minute}:${seconds} ${meridian}`;
             clock.innerHTML = cl;
             clock.classList.add("clock-style");
