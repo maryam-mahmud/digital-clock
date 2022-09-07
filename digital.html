@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>     
+    <style>
+        @import url('http://fonts.cdnfonts.com/css/alarm-clock');
+        .clock-style{
+            font-size: 7rem;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: rosybrown;
+            font-family: 'alarm clock', sans-serif;
+        } 
+    </style>
+</head>
+<body>
+    <div class="d-clock" id="clock"> </div>
+
+    <script>
+        let clock = document.getElementById("clock");
+        showClock()
+
+        function padZero(item){
+            return item < 10 ? "0" + item : item;
+        }
+
+        function showClock(){ 
+
+            let date = new Date();
+            let hour = date.getHours();
+            let minute = date.getMinutes();
+            let seconds = date.getSeconds();
+
+            meridian = hour > 12 ? "PM" : "AM";
+            
+            minute = padZero(minute);
+            seconds = padZero(seconds);
+            hour = padZero(hour);
+            if(hour == 12){
+                hour -= 12;
+            }
+        
+            let cl = `${hour}:${minute}:${seconds} ${meridian}`;
+            clock.innerHTML = cl;
+            clock.classList.add("clock-style");
+
+            setTimeout(showClock, 1000);   
+        }
+    </script>
+</body>
+</html>
